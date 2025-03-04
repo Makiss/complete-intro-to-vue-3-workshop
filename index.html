@@ -9,9 +9,24 @@
   <body>
     <div id="app">
       <ul v-if="characters.length > 0">
-        <li v-for="character in characters">{{ character.name }}</li>
+        <li v-for="character in characters">
+          <p>{{ character.name }}</p>
+          <button @click="toggleFavorite(character)">Favorite</button>
+        </li>
       </ul>
       <p v-else>There are no characters</p>
+      <h2>Favorite Characters</h2>
+      <ul v-if="favoriteCharacters.length > 0">
+        <li v-for="character in favoriteCharacters">{{character.name}}</li>
+      </ul>
+      <p v-else>There are no favorite characters</p>
+      <h2>New Character</h2>
+      <label for="characterName">Name</label>
+      <input
+        type="text"
+        v-model="newCharacter.name"
+        @keyup.enter="addNewCharacter"
+      />
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
@@ -19,15 +34,28 @@
 
       const app = createApp({
         data: () => ({
+          newCharacter: {
+            name: "",
+          },
           characters: [
             { name: "Rick" },
             { name: "Maggie" },
             { name: "Michonne" },
             { name: "Negan" },
-            { name: "Glenn" },
-            { name: "Carl" },
           ],
+          favoriteCharacters: [],
         }),
+        methods: {
+          toggleFavorite(character) {
+            this.favoriteCharacters.push(character);
+          },
+          addNewCharacter(event) {
+            this.characters.push(this.newCharacter);
+            this.newCharacter = {
+              name: "",
+            };
+          },
+        },
       });
 
       app.mount("#app");
