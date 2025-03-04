@@ -4,7 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Walking Dead TV characters</title>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <ul v-if="characters.length > 0">
+        <li v-for="character in characters">{{ character.name }}</li>
+      </ul>
+      <p v-else>There are no characters</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+
+      const app = createApp({
+        data: () => ({
+          characters: [
+            { name: "Rick" },
+            { name: "Maggie" },
+            { name: "Michonne" },
+            { name: "Negan" },
+            { name: "Glenn" },
+            { name: "Carl" },
+          ],
+        }),
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
 </html>
