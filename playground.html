@@ -9,7 +9,7 @@
   <body>
     <h1>Frontend Masters Vue Workshop</h1>
     <div id="app">
-      <h1>Counter</h1>
+      <h1>{{displayTitle}}</h1>
       <p :data-increment-by="incrementAmount">{{count}}</p>
       <button @click="incrementCount">Increment Count</button>
       <div>
@@ -30,11 +30,21 @@
       const app = createApp({
         data() {
           return {
+            counterTitle: "Counter",
             incrementAmount: 1,
             count: 10,
             message: "Hello, it works",
             listOfNumbers: [1, 2, 3, 4, 5],
           };
+        },
+        computed: {
+          displayTitle() {
+            if (this.count > 20) {
+              return "Counter Very Long";
+            } else {
+              return "Counter Standard";
+            }
+          },
         },
         methods: {
           incrementCount() {
