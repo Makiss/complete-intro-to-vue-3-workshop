@@ -23,6 +23,11 @@ export default {
     ],
     favoriteCharacters: [],
   }),
+  methods: {
+    onNewCharacterAdd(payload) {
+      this.characters.push(payload)
+    },
+  },
 }
 </script>
 
@@ -30,5 +35,5 @@ export default {
   <CharacterStatistics :characters="characters" />
   <Characters :characters="characters" :favoriteCharacters="favoriteCharacters" />
   <FavoriteCharacters :favoriteCharacters="favoriteCharacters" />
-  <CharacterForm :characters="characters" />
+  <CharacterForm @new-character="onNewCharacterAdd" />
 </template>

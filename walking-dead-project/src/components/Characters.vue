@@ -1,5 +1,10 @@
 <script>
+import Character from '@/components/Character.vue'
+
 export default {
+  components: {
+    Character,
+  },
   props: {
     characters: {
       type: Array,
@@ -11,8 +16,8 @@ export default {
     },
   },
   methods: {
-    toggleFavorite(character) {
-      this.favoriteCharacters.push(character)
+    addToFavorite(payload) {
+      this.favoriteCharacters.push(payload)
     },
   },
 }
@@ -22,8 +27,7 @@ export default {
   <h2>Characters</h2>
   <ul v-if="characters.length > 0">
     <li v-for="character in characters">
-      <p>{{ character.name }}</p>
-      <button @click="toggleFavorite(character)">Favorite</button>
+      <Character @add-to-favorite="addToFavorite" :character="character" />
     </li>
   </ul>
   <p v-else>There are no characters</p>

@@ -1,11 +1,5 @@
 <script>
 export default {
-  props: {
-    characters: {
-      type: Array,
-      requred: true,
-    },
-  },
   data: () => ({
     newCharacter: {
       name: '',
@@ -14,12 +8,13 @@ export default {
   }),
   methods: {
     addNewCharacter() {
-      this.characters.push(this.newCharacter)
+      this.$emit('new-character', this.newCharacter)
       this.newCharacter = {
         name: '',
       }
     },
   },
+  emits: ['new-character'],
 }
 </script>
 
