@@ -1,23 +1,5 @@
-<script>
-import Counter from './components/Counter.vue'
-
-export default {
-  components: { Counter },
-  data() {
-    return {
-      message: 'Hello, it works',
-      listOfNumbers: [1, 2, 3, 4, 5],
-    }
-  },
-}
-</script>
+<script></script>
 
 <template>
-  <counter />
-  <hr />
-  <p v-if="message.length % 2 === 0">Even: {{ message }}</p>
-  <p v-else>Odd: {{ message }}</p>
-  <ul>
-    <li v-for="number in listOfNumbers">{{ number }}</li>
-  </ul>
+  <h1>New App</h1>
 </template>
