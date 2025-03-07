@@ -1,18 +1,18 @@
 <script>
+import { reactive } from "vue";
+
 export default {
-  data: () => ({
-    users: null,
-  }),
-  created() {
-    this.fetchUsers();
-  },
-  methods: {
-    async fetchUsers() {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      this.users = await response.json();
-    },
+  async setup() {
+    const state = reactive({
+      users: null,
+    });
+
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    state.users = await response.json();
+
+    return {
+      users: state.users,
+    };
   },
 };
 </script>
