@@ -1,34 +1,28 @@
-<script>
+<script setup>
+import { ref, computed } from "vue";
 import HomePage from "./components/HomePage.vue";
 import LoginPage from "./components/LoginPage.vue";
 import UsersPage from "./components/UsersPage.vue";
 
-export default {
-  components: {
-    HomePage,
-    LoginPage,
-    UsersPage,
-  },
-  data: () => ({
-    currentPage: "Home",
-  }),
-  methods: {
-    showHomePage() {
-      this.currentPage = "Home";
-    },
-    showLoginPage() {
-      this.currentPage = "Login";
-    },
-    showUsersPage() {
-      this.currentPage = "Users";
-    },
-  },
-  computed: {
-    renderPage() {
-      return this.currentPage + "Page";
-    },
-  },
+const PAGE_NAMES = {
+  HOME: "Home",
+  LOGIN: "Login",
+  USERS: "Users",
 };
+
+const currentPage = ref("Home");
+
+const PAGE_MAPPER = {
+  [PAGE_NAMES.HOME]: HomePage,
+  [PAGE_NAMES.LOGIN]: LoginPage,
+  [PAGE_NAMES.USERS]: UsersPage,
+};
+
+const showHomePage = () => (currentPage.value = PAGE_NAMES.HOME);
+const showLoginPage = () => (currentPage.value = PAGE_NAMES.LOGIN);
+const showUsersPage = () => (currentPage.value = PAGE_NAMES.USERS);
+
+const renderPage = computed(() => PAGE_MAPPER[currentPage.value]);
 </script>
 
 <template>
