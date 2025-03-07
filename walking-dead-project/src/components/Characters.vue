@@ -1,20 +1,8 @@
 <script setup>
 import Character from '@/components/Character.vue'
+import { useCharactersStore } from '@/composables/useCharactersStore'
 
-const { character, favoriteCharacters } = defineProps({
-  characters: {
-    type: Array,
-    requred: true,
-  },
-  favoriteCharacters: {
-    type: Array,
-    requred: true,
-  },
-})
-
-const addToFavorite = (payload) => {
-  favoriteCharacters.push(payload)
-}
+const { characters, addToFavorite } = useCharactersStore()
 </script>
 
 <template>

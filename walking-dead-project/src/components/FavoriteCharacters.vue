@@ -1,12 +1,7 @@
 <script setup>
-import { defineProps } from 'vue'
+import { useCharactersStore } from '@/composables/useCharactersStore'
 
-const { favoriteCharacters } = defineProps({
-  favoriteCharacters: {
-    type: Array,
-    requred: true,
-  },
-})
+const { favoriteCharacters } = useCharactersStore()
 </script>
 
 <template>

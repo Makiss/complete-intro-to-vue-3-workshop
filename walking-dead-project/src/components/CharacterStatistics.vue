@@ -1,12 +1,8 @@
 <script setup>
-import { computed, defineProps } from 'vue'
+import { useCharactersStore } from '@/composables/useCharactersStore'
+import { computed } from 'vue'
 
-const { characters } = defineProps({
-  characters: {
-    type: Array,
-    requred: true,
-  },
-})
+const { characters } = useCharactersStore()
 
 const featureStatistics = computed(() => {
   return characters.reduce((acc, character) => {
