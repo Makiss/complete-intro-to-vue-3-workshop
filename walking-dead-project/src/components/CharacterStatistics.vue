@@ -1,28 +1,27 @@
-<script>
-export default {
-  props: {
-    characters: {
-      type: Array,
-      requred: true,
-    },
-  },
-  computed: {
-    featureStatistics() {
-      return this.characters.reduce((acc, character) => {
-        for (const feature of character.features) {
-          const featureLowerCased = feature.toLowerCase()
-          if (!(featureLowerCased in acc)) {
-            acc[featureLowerCased] = 0
-          }
+<script setup>
+import { computed, defineProps } from 'vue'
 
-          acc[featureLowerCased] += 1
-        }
-
-        return acc
-      }, {})
-    },
+const { characters } = defineProps({
+  characters: {
+    type: Array,
+    requred: true,
   },
-}
+})
+
+const featureStatistics = computed(() => {
+  return characters.reduce((acc, character) => {
+    for (const feature of character.features) {
+      const featureLowerCased = feature.toLowerCase()
+      if (!(featureLowerCased in acc)) {
+        acc[featureLowerCased] = 0
+      }
+
+      acc[featureLowerCased] += 1
+    }
+
+    return acc
+  }, {})
+})
 </script>
 
 <template>

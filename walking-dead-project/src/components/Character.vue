@@ -1,17 +1,15 @@
-<script>
-export default {
-  props: {
-    character: {
-      type: Object,
-      required: true,
-    },
+<script setup>
+import { defineEmits, defineProps } from 'vue'
+
+const props = defineProps({
+  character: {
+    type: Object,
+    required: true,
   },
-  emits: ['add-to-favorite'],
-  methods: {
-    onAddToFavorite() {
-      this.$emit('add-to-favorite', this.character)
-    },
-  },
+})
+const emit = defineEmits(['add-to-favorite'])
+const onAddToFavorite = () => {
+  emit('add-to-favorite', props.character)
 }
 </script>
 

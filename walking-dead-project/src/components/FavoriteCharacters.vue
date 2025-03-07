@@ -1,12 +1,12 @@
-<script>
-export default {
-  props: {
-    favoriteCharacters: {
-      type: Array,
-      requred: true,
-    },
+<script setup>
+import { defineProps } from 'vue'
+
+const { favoriteCharacters } = defineProps({
+  favoriteCharacters: {
+    type: Array,
+    requred: true,
   },
-}
+})
 </script>
 
 <template>

@@ -1,25 +1,19 @@
-<script>
+<script setup>
 import Character from '@/components/Character.vue'
 
-export default {
-  components: {
-    Character,
+const { character, favoriteCharacters } = defineProps({
+  characters: {
+    type: Array,
+    requred: true,
   },
-  props: {
-    characters: {
-      type: Array,
-      requred: true,
-    },
-    favoriteCharacters: {
-      type: Array,
-      requred: true,
-    },
+  favoriteCharacters: {
+    type: Array,
+    requred: true,
   },
-  methods: {
-    addToFavorite(payload) {
-      this.favoriteCharacters.push(payload)
-    },
-  },
+})
+
+const addToFavorite = (payload) => {
+  favoriteCharacters.push(payload)
 }
 </script>
 
