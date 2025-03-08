@@ -1,7 +1,7 @@
 <script setup>
-import { useCharactersStore } from '@/composables/useCharactersStore'
+import { useNewCharactersStore } from '@/stores/CharacterStore'
 
-const { newCharacter, addNewCharacter } = useCharactersStore()
+const { newCharacter, addNewCharacter } = useNewCharactersStore()
 </script>
 
 <template>

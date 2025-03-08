@@ -1,8 +1,8 @@
 <script setup>
-import { useCharactersStore } from '@/composables/useCharactersStore'
+import { useNewCharactersStore } from '@/stores/CharacterStore'
 import { computed } from 'vue'
 
-const { characters } = useCharactersStore()
+const { characters } = useNewCharactersStore()
 
 const featureStatistics = computed(() => {
   return characters.reduce((acc, character) => {

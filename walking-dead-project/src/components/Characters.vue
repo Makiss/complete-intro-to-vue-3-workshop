@@ -1,8 +1,8 @@
 <script setup>
 import Character from '@/components/Character.vue'
-import { useCharactersStore } from '@/composables/useCharactersStore'
+import { useNewCharactersStore } from '@/stores/CharacterStore'
 
-const { characters, addToFavorite } = useCharactersStore()
+const { characters, addToFavorite } = useNewCharactersStore()
 </script>
 
 <template>

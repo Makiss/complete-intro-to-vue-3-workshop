@@ -1,7 +1,7 @@
 <script setup>
-import { useCharactersStore } from '@/composables/useCharactersStore'
+import { useNewCharactersStore } from '@/stores/CharacterStore'
 
-const { favoriteCharacters } = useCharactersStore()
+const { favoriteCharacters } = useNewCharactersStore()
 </script>
 
 <template>
